@@ -22,9 +22,9 @@ allergy_dict = {'peanut': 'peanut-free', 'peanuts': 'peanut-free', 'tree nut': '
 print("Welcome to the Allergy App!")
 
 print("What would you like to cook?")
-q_input = "Borscht"
+q_input = "Chicken"
 print("What is your food allergy?")
-health_input = "Peanut"
+health_input = "peanuts"
 
 health_arg = ""
 allergen_found = False
@@ -39,10 +39,8 @@ if allergen_found:
 else:
     link = url + q + q_input + "&" + edamam_id + "&" + edamam_key + "&" + q + q_input + "&" + "excluded" + "=" + health_input
 
-
-
+print(link)
 x = requests.get(link).json()
-
 
 listing = []
 for i in range(0, int(x['to'])):
@@ -81,5 +79,16 @@ for element in list3:
     index = list0.index(element)
     indices.append(index)
 
-print(indices)
+#print(indices)
 
+
+images = []
+urls = []
+
+for i in indices:
+    images.append(x['hits'][i]['recipe']['image'])
+    urls.append(x['hits'][i]['recipe']['url'])
+
+
+print(images)
+print(urls)
