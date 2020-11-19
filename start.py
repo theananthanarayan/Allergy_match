@@ -22,7 +22,6 @@ def allergies_response():
     allergy_name = request.form['One']
     recipe_name = request.form['Two']
     ingredient_preferences = request.form['Three']
-    print(ingredient_preferences)
     edamam_response = requests.get("https://api.edamam.com/search?app_id=6e3a1c55&app_key=979f4ea3d3c1014ffa5de338accf640b")
 
     url = 'https://api.edamam.com/search?'
