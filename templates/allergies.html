@@ -54,13 +54,23 @@
         
         <h3>Enter your allgeries</h3>
 
-        <form>
+        <form action = "{{url_for('allergies_response')}}", method = "post">
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="validationDefault01">Allergies</label>
-              <input type="text" class="form-control" id="validationDefault01" placeholder="First name" value="Mark" required>
+              <input type="text" name = "One" class="form-control" id="validationDefault01" placeholder="First name" value="Mark" required>
             </div>
           </div>
+
+          <h3>Enter the recipe you want to search</h3>
+
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label for="validationDefault01">Recipes</label>
+              <input type="text" name = "Two" class="form-control" id="validationDefault01" placeholder="First name" value="Mark" required>
+            </div>
+          </div>
+
           <h4>Common Allergies</h4>
           <div class="form-group">
             <div class="form-check">
