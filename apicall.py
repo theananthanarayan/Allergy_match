@@ -3,6 +3,8 @@ import time
 from sklearn.metrics import pairwise_kernels
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics import ndcg_score
+import numpy as np
 
 edamam_response = requests.get("https://api.edamam.com/search?app_id=6e3a1c55&app_key=979f4ea3d3c1014ffa5de338accf640b")
 print(edamam_response)      # 200 – OK. The request was successful.
@@ -39,7 +41,7 @@ if allergen_found:
 else:
     link = url + q + q_input + "&" + edamam_id + "&" + edamam_key + "&" + q + q_input + "&" + "excluded" + "=" + health_input
 
-print(link)
+#print(link)
 x = requests.get(link).json()
 
 listing = []
@@ -89,6 +91,12 @@ for i in indices:
     images.append(x['hits'][i]['recipe']['image'])
     urls.append(x['hits'][i]['recipe']['url'])
 
+listx = list1[0:6]
+print(listx)
+print(list3)
+true_relevance = np.asarray([list0[0:6]])
+scores = np.asarray([list3])
 
-print(images)
-print(urls)
+
+ndcg = ndcg_score(scores, true_relevance)
+print(ndcg)

@@ -109,7 +109,6 @@ def allergies_response():
         bm25 = BM25Okapi(tokenized_secondlist)
         tokenized_query = ingredient_preferences.split(" ")
         scores = bm25.get_scores(tokenized_query)
-
         finalized_list = bm25.get_top_n(tokenized_query, secondlist, n=6)
 
         indices = []
